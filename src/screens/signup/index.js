@@ -2,75 +2,46 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, TextInput, TextInputBase, TouchableOpacity, Text, View, Image } from 'react-native';
 import Images from '../../../assets/logo.png'
-import { auth, createUserWithEmailAndPassword, db, setDoc, doc } from "../../config/Firebase";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { db, setDoc, doc } from "../../config/Firebase";
 import { useState } from 'react';
 export default function Signup({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // if (email != '' && email != null) {
-  //   const validateEmail = email.match(
-  //     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  //   );
-  //   if (validateEmail) {
-  //     if (password != '' && password != null) {
-  //       const validatePassword = password.match(/^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,20}$/);
-  //       if (validatePassword) {
-  function CreateAccount() {
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        const user = userCredential.user;
-        const uid = user.uid;
-        await setDoc(doc(db, "users", uid), {
-          name,
-          email,
-          uid,
-          type: "user"
-        });
-        alert("Sign Up Successfully!");
-        setTimeout(() => navigation.navigate('Login'), 1000);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        alert("Something went wrong! \n" + errorMessage);
-      });
-  }
-
-  //   }
-  // }
-  // }
   return (
     <View style={styles.container}>
       <View style={{ display: "flex" }}>
-        {/* <Image style={{width: '100', height: '100'}} source={require(Images)} /> */}
+        <Image style={{ width: '100', height: '100' }} source={require('../../../assets/logo.png')} />
       </View>
       <Text style={styles.heading}>Signup</Text>
       <Text style={styles.text}>Add Your details to Signup</Text>
       <TextInput
         placeholder="Enter Your Name"
-        onChangeText={(text) => setName(text)}
+        onChange={(e) => setName(e.target.value)}
         style={styles.input} />
       <TextInput
         autoComplete='password-new'
-        onChangeText={(text) => setEmail(text)}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter Your Email"
         style={styles.input} />
       <TextInput
         secureTextEntry={true}
-        onChangeText={(text) => setPassword(text)}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter Your Password"
         style={styles.input} />
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttontext}
-          onPress={CreateAccount()}
+      onPress={() => navigation.navigate('Login')}
         >Signup</Text>
       </TouchableOpacity>
       <Text style={styles.text, styles.mb_20}>Forget Your Password? </Text>
       <Text style={styles.text}>Already Have an Account? <Text style={styles.green} onPress={() => navigation.navigate('Login')}>Login</Text></Text>
       <StatusBar style="auto" />
     </View>
+
   )
 }
 
@@ -120,3 +91,46 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   }
 });
+// if (email != '' && email != null) {
+  //   const validateEmail = email.match(
+  //     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  //   );
+  //   if (validateEmail) {
+  //     if (password != '' && password != null) {
+  //       const validatePassword = password.match(/^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{6,20}$/);
+  //       if (validatePassword) {
+  // }
+  // }
+  // }
+  // const auth = getAuth();
+  // createUserWithEmailAndPassword(auth, email, password)
+  //   .then((userCredential) => {
+  //     // Signed in 
+  //     const user = userCredential.user;
+  //     console.log("user resistered",user)
+  //   })
+  //   .catch((error) => {
+  //     const errorMessage = error.message;
+  //   console.log("error agaya",errorMessage)
+  //   });
+
+  //   function CreateAccount() {
+  // createUserWithEmailAndPassword(auth, email, password)
+  //     .then(async (userCredential) => {
+  //       const user = userCredential.user;
+  //       const uid = user.uid;
+  //       await setDoc(doc(db, "users", uid), {
+  //         name,
+  //         email,
+  //         uid,
+  //         type: "user"
+  //       });
+  //       alert("Sign Up Successfully!");
+  //       setTimeout(() => navigation.navigate('Login'), 1000);
+  //     })
+  //     .catch((error) => {
+  //       const errorMessage = error.message;
+  //       alert("Something went wrong! \n" + errorMessage);
+  //     });
+
+  //   }

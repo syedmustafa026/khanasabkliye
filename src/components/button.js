@@ -1,7 +1,6 @@
 import React from "react";
 import {  StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
-
 export default function Butn(props) {
 
     return (
@@ -14,9 +13,10 @@ export default function Butn(props) {
 }
 const styles = StyleSheet.create({
     butn: {
-        backgroundColor: "#2A2AC0",
+        backgroundColor: "#3edb308f",
         width: 340,
         height: 55,
+        marginLeft: 20,
         marginTop: 60,
         justifyContent: "space-around",
         alignItems: "center",
