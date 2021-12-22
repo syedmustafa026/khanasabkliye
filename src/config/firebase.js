@@ -4,7 +4,6 @@ import { getFirestore, doc, setDoc, getDoc, addDoc, collection, getDocs, query,w
 import { getStorage, ref } from "firebase/storage";
 
 const firebaseApp = initializeApp({
-  
   // measurementId: "G-HZ0VP5QJY0"
   apiKey: "AIzaSyAX39RhAg2NO5XaB25Ys8D20NdEAUULMoE",
   authDomain: "formsignup-f56db.firebaseapp.com",
