@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
     return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{
-              headerShown: false,}}>
+          headerShown: false,}}>
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Options" component={Options} />
