@@ -4,7 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Signup,Login,Options,Application } from '../screens';
 
 const Stack = createNativeStackNavigator();
-  
   function AppNavigation() {
     return (
       <NavigationContainer>
